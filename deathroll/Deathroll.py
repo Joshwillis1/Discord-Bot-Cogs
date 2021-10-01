@@ -12,7 +12,7 @@ class deathroll(commands.Cog):
     @commands.command()
     async def deathroll(self, ctx, amount):
         """Let's play deathroll"""
-        if amount > 9999999:
+        if int(amount) > 9999999:
             return await ctx.send("fuck off idiot")
 
         playerOne = ctx.author.display_name
