@@ -31,9 +31,11 @@ class roulette(commands.Cog):
         await ctx.send('Enter number of bullets (2-6)')
         try:
             r = await self.bot.wait_for('message', timeout=60, check=check)
-            chambers = r.int()
+            chambers = r.int
         except asyncio.TimeoutError:
             return await ctx.send('Timed out, try again')
+        
+        await ctx.send(chambers)
 
 
 
