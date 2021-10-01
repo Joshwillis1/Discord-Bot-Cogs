@@ -29,7 +29,7 @@ class deathroll(commands.Cog):
         await ctx.send('Second player, say I.')
         try:
             r = await self.bot.wait_for('message', timeout=60, check=check)
-            playerTwo = r.author
+            playerTwo = r.author.display_name
         except asyncio.TimeoutError:
             return await ctx.send('Nobody else wants to play, shutting down.')
 
@@ -38,8 +38,8 @@ class deathroll(commands.Cog):
         if randp == 1:
             turn = playerOne
         else:
-            turn = playerTwo
-        await ctx.send(turn)
+            turn = "test"
+        await ctx.send(playerTwo)
         # Sets the initial roll
         roll = int(bet)
         while roll > 1:
