@@ -8,6 +8,7 @@ class deathroll(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
+        self.games = []
 
     @commands.command()
     async def deathroll(self, ctx, amount):
@@ -32,7 +33,7 @@ class deathroll(commands.Cog):
             )
         )
 
-        game = deathroll(self, ctx)
+        game = deathroll(self, ctx, self.bot, ctx.author)
         self.games.append(game)
 
         await ctx.send('Second player, say I.')
