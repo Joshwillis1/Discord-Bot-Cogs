@@ -12,12 +12,14 @@ class deathroll(commands.Cog):
     @commands.command()
     async def deathroll(self, ctx, amount):
         """Let's play deathroll"""
+        if amount > 9999999:
+            return await ctx.send("fuck off idiot")
+
         playerOne = ctx.author.display_name
         playerTwo = ""
         bet = amount
         roll = 0
         turn = ""
-        #await ctx.send("Player one = " + playerOne + " Player two = " + playerTwo + " Bet ammount = " + ('{:,}'.format(int(bet))))
         check = lambda m: (
             not m.author.bot
             and m.channel == ctx.message.channel
