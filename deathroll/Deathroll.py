@@ -9,19 +9,23 @@ class deathroll(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    #main function
     @commands.command()
     async def deathroll(self, ctx, amount):
         """Let's play deathroll"""
 
+        #ensure the amount is not over 9999999, if so, return message
         if int(amount) > 9999999:
             return await ctx.send("fuck off idiot")
 
+        #variables
         playerOne = ctx.author.display_name
         playerTwo = ""
         bet = amount
         roll = 0
         turn = ""
 
+        #this is needed to run the check for the user response
         check = lambda m: (
             not m.author.bot
             and m.channel == ctx.message.channel
@@ -31,6 +35,7 @@ class deathroll(commands.Cog):
             )
         )
 
+        #have the second player opt in
         await ctx.send('Second player, say I.')
         try:
             r = await self.bot.wait_for('message', timeout=60, check=check)

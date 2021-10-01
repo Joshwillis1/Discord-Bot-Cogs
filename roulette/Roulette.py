@@ -9,12 +9,15 @@ class roulette(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    #main function
     @commands.command()
     async def roulette(self, ctx):
         """Feeling lucky?"""
 
+        #variables
         chambers = ""
 
+        #this is needed to check user response
         check = lambda m: (
             not m.author.bot
             and m.channel == ctx.message.channel
@@ -24,13 +27,11 @@ class roulette(commands.Cog):
             )
         )
 
+        #ask user how many bullets (chances) they would like and wait for response
         await ctx.send('Enter number of bullets (2-6)')
-
         try:
             r = await self.bot.wait_for('message', timeout=60, check=check)
-            chambers = int(r)
-            await ctx.send (chambers)
-            
+            chambers = r.int()
         except asyncio.TimeoutError:
             return await ctx.send('Timed out, try again')
 
