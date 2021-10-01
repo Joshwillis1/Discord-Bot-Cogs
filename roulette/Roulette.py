@@ -27,13 +27,11 @@ class roulette(commands.Cog):
         #pause for dramatic effect
         time.sleep(3)
         #perform the 50/50 coin flip
-        coin_flip = [0,1]
-        random.choice(coin_flip)
+        coin_flip = random.choice(0,1)
         if coin_flip == 0:
-            await ctx.send('Cya idiot')
-
+            return  await ctx.send('Cya idiot')
         elif coin_flip == 1:
-            await ctx.send('Safe for now')
+            return await ctx.send('Safe for now')
 
 
 
