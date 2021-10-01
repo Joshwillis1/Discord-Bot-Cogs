@@ -9,7 +9,7 @@ import asyncio
 class roulette(commands.Cog):
     """Roulette"""
 
-    def __init__(self, bot):
+    def __init__(self, bot, player):
         self.bot = bot
 
     #main function
@@ -27,7 +27,7 @@ class roulette(commands.Cog):
         #pause for dramatic effect
         time.sleep(3)
         #perform the 50/50 coin flip
-        coin_flip = random.choice(0,1)
+        coin_flip = random.choice([0,1])
         if coin_flip == 0:
             return  await ctx.send('Cya idiot')
         elif coin_flip == 1:
