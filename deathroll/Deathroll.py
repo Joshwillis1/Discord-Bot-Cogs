@@ -1,6 +1,7 @@
 # Deathroll
 from random import randrange
 from redbot.core import commands
+from redbot.core import Config
 import asyncio
 
 class deathroll(commands.Cog):
@@ -9,6 +10,7 @@ class deathroll(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.games = []
+        self.config = Config.get_conf(self, identifier=7345167901)
 
     @commands.command()
     async def deathroll(self, ctx, amount):
@@ -33,7 +35,7 @@ class deathroll(commands.Cog):
             )
         )
 
-        game = deathroll(self, ctx, self.bot, ctx.author)
+        game = deathroll(self, ctx)
         self.games.append(game)
 
         await ctx.send('Second player, say I.')
