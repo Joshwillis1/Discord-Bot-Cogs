@@ -9,9 +9,9 @@ class deathroll(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def deathroll(self, ctx):
+    async def deathroll(self, ctx, *, entered_title):
         """Let's play deathroll"""
-        await ctx.send("I can do stuff!")
+        await ctx.send("I can do stuff!"+entered_title)
         return
         playerOne = ""
         playerTwo = ""
