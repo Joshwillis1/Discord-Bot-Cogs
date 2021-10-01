@@ -1,8 +1,10 @@
 # Deathroll
+import discord
 from random import randrange
 from redbot.core import commands
-import asyncio
+from redbot.core import Config
 from redbot.core import checks
+import asyncio
 
 class deathroll(commands.Cog):
     """Deathroll"""
@@ -19,6 +21,14 @@ class deathroll(commands.Cog):
         roll = 0
         turn = ""
         #await ctx.send("Player one = " + playerOne + " Player two = " + playerTwo + " Bet ammount = " + ('{:,}'.format(int(bet))))
+        check = lambda m: (
+            not m.author.bot
+            and m.channel == ctx.message.channel
+            and (
+                (m.author != ctx.message.author and m.content.lower() == 'i')
+                or (m.author == ctx.message.author and m.content.lower() == 'ai')
+            )
+        )
         await ctx.send('Second player, say I.')
         try:
             r = await self.bot.wait_for('message', timeout=60, check=check)
