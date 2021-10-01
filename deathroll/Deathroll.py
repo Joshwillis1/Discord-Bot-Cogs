@@ -12,6 +12,9 @@ class deathroll(commands.Cog):
     @commands.command()
     async def deathroll(self, ctx, amount):
         """Let's play deathroll"""
+        if [game for game in self.games if game.ctx.channel == ctx.channel]:
+            return await ctx.send('A game is already running in this channel.')
+
         if int(amount) > 9999999:
             return await ctx.send("fuck off idiot")
 
