@@ -12,7 +12,7 @@ class deathroll(commands.Cog):
     @commands.command()
     async def deathroll(self, ctx, amount):
         """Let's play deathroll"""
-        playerOne = self
+        playerOne = ctx.author.display_name
         playerTwo = ""
         bet = amount
         roll = 0
