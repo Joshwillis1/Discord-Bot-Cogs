@@ -32,6 +32,10 @@ class deathroll(commands.Cog):
                 or (m.author == ctx.message.author and m.content.lower() == 'ai')
             )
         )
+
+        game = deathroll(self, ctx)
+        self.games.append(game)
+
         await ctx.send('Second player, say I.')
         try:
             r = await self.bot.wait_for('message', timeout=60, check=check)
