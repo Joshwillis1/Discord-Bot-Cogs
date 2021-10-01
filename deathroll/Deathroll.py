@@ -1,7 +1,6 @@
 # Deathroll
 from random import randrange
 from redbot.core import commands
-from redbot.core import Config
 import asyncio
 
 class deathroll(commands.Cog):
@@ -9,8 +8,6 @@ class deathroll(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
-        self.games = []
-        self.config = Config.get_conf(self, identifier=7345167901)
 
     @commands.command()
     async def deathroll(self, ctx, amount):
@@ -24,9 +21,6 @@ class deathroll(commands.Cog):
         bet = amount
         roll = 0
         turn = ""
-
-        if [game for game in self.games if game.ctx.channel == ctx.channel]:
-            return await ctx.send('A game is already running in this channel.')
 
         check = lambda m: (
             not m.author.bot
@@ -43,9 +37,6 @@ class deathroll(commands.Cog):
             playerTwo = r.author.display_name
         except asyncio.TimeoutError:
             return await ctx.send('Nobody else wants to play, shutting down.')
-
-        game = deathroll(self, ctx)
-        self.games.append(game)
 
         # This randomly selects who goes first.
         randp = randrange(1, 3, 1)
