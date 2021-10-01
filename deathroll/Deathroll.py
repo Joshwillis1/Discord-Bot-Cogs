@@ -15,8 +15,6 @@ class deathroll(commands.Cog):
     @commands.command()
     async def deathroll(self, ctx, amount):
         """Let's play deathroll"""
-        if [game for game in self.games if game.ctx.channel == ctx.channel]:
-            return await ctx.send('A game is already running in this channel.')
 
         if int(amount) > 9999999:
             return await ctx.send("fuck off idiot")
@@ -26,6 +24,10 @@ class deathroll(commands.Cog):
         bet = amount
         roll = 0
         turn = ""
+
+        if [game for game in self.games if game.ctx.channel == ctx.channel]:
+            return await ctx.send('A game is already running in this channel.')
+
         check = lambda m: (
             not m.author.bot
             and m.channel == ctx.message.channel
@@ -35,15 +37,15 @@ class deathroll(commands.Cog):
             )
         )
 
-        game = deathroll(self, ctx)
-        self.games.append(game)
-
         await ctx.send('Second player, say I.')
         try:
             r = await self.bot.wait_for('message', timeout=60, check=check)
             playerTwo = r.author.display_name
         except asyncio.TimeoutError:
             return await ctx.send('Nobody else wants to play, shutting down.')
+
+        game = deathroll(self, ctx)
+        self.games.append(game)
 
         # This randomly selects who goes first.
         randp = randrange(1, 3, 1)
