@@ -9,7 +9,7 @@ class deathroll(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def deathroll(self, ctx, *, player1, player2, amount):
+    async def deathroll(self, ctx, player1, player2, amount):
         """Let's play deathroll"""
         await ctx.send(player1)
         await ctx.send(player2)
