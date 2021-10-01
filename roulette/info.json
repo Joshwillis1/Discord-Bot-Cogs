@@ -1,0 +1,8 @@
+{
+    "name": "Roulette",
+    "author": ["Josh"],
+    "description": "Coin flip if for user getting kicked from server",
+    "short": "Coin flip kick.",
+    "tags": ["coin_flip", "roulette", "kick"],
+    "install_msg": "Feelin' lucky, punk?"
+}

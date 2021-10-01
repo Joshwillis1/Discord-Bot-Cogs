@@ -1,0 +1,8 @@
+{
+    "name": "deathroll",
+    "author": ["Josh"],
+    "description": "For users to deathroll eachother in Discord",
+    "short": "Discord deathroll",
+    "tags": ["deathroll"],
+    "install_msg": "Time to roll"
+}
