@@ -12,7 +12,6 @@ class deathroll(commands.Cog):
     @commands.command()
     async def deathroll(self, ctx, amount):
         """Let's play deathroll"""
-        await ctx.send(ctx.author.display_name)
         playerOne = ctx.author.display_name
         playerTwo = ""
         bet = amount
@@ -40,6 +39,7 @@ class deathroll(commands.Cog):
             turn = playerOne
         else:
             turn = playerTwo
+        await ctx.send(turn)
         # Sets the initial roll
         roll = int(bet)
         while roll > 1:
