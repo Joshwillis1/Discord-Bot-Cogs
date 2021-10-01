@@ -16,11 +16,8 @@ class roulette(commands.Cog):
     @commands.command()
     @checks.admin_or_permissions(kick_members=True)
     @checks.bot_has_permissions(kick_members=True)
-    async def roulette(self, ctx, player):
+    async def roulette(self, ctx):
         """Feeling lucky?"""
-
-        #variables
-        player = ctx.author
 
         #start the game
         await ctx.send("Feelin' lucky?")
