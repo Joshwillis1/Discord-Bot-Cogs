@@ -9,14 +9,14 @@ import asyncio
 class roulette(commands.Cog):
     """Roulette"""
 
-    def __init__(self, bot, player):
+    def __init__(self, bot):
         self.bot = bot
 
     #main function
     @commands.command()
     @checks.admin_or_permissions(kick_members=True)
     @checks.bot_has_permissions(kick_members=True)
-    async def roulette(self, ctx):
+    async def roulette(self, ctx, player):
         """Feeling lucky?"""
 
         #variables
