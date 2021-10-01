@@ -68,13 +68,13 @@ class deathroll(commands.Cog):
                 turn = playerOne
         # Display winner and losser 
         winner = ""
-        losser = turn
+        loser = turn
 
-        if losser == playerOne:
+        if loser == playerOne:
             winner = playerTwo
         else:
             winner = playerOne
 
         await ctx.send("------------------------------")
-        await ctx.send(losser + " losses and must pay " + winner + " " + ('{:,}'.format(int(bet))) + "!")           
+        await ctx.send(loser + " loses and must pay " + winner + " " + ('{:,}'.format(int(bet))) + "!")           
     

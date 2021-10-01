@@ -1,5 +1,6 @@
 # Roulette
 import random
+import time
 from redbot.core import commands
 import asyncio
 
@@ -15,27 +16,22 @@ class roulette(commands.Cog):
         """Feeling lucky?"""
 
         #variables
-        chambers = ""
+        player = ctx.author
 
-        #this is needed to check user response
-        check = lambda m: (
-            not m.author.bot
-            and m.channel == ctx.message.channel
-            and (
-                (m.author != ctx.message.author and m.content.lower() == 'i')
-                or (m.author == ctx.message.author and m.content.lower() == 'ai')
-            )
-        )
+        #start the game
+        await ctx.send("Feelin' lucky?")
+        #pause for dramatic effect
+        time.sleep(3)
+        #perform the 50/50 coin flip
+        coin_flip = [0,1]
+        random.choice(coin_flip)
+        if coin_flip == 0:
+            return await ctx.send('Cya idiot')
+        else:
+            return await ctx.send('Safe for now')
 
-        #ask user how many bullets (chances) they would like and wait for response
-        await ctx.send('Enter number of bullets (2-6)')
-        try:
-            r = await self.bot.wait_for('message', timeout=60, check=check)
-            chambers = r.int
-        except asyncio.TimeoutError:
-            return await ctx.send('Timed out, try again')
-        
-        await ctx.send(chambers)
+
+
 
 
 
