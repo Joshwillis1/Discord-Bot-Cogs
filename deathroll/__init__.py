@@ -1,4 +1,4 @@
-from .deathroll import deathroll
+from .Deathroll import deathroll
 
 
 def setup(bot):
