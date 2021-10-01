@@ -38,8 +38,7 @@ class deathroll(commands.Cog):
         if randp == 1:
             turn = playerOne
         else:
-            turn = "test"
-        await ctx.send(playerTwo)
+            turn = playerTwo
         # Sets the initial roll
         roll = int(bet)
         while roll > 1:
