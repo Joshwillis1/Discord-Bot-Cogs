@@ -11,7 +11,9 @@ class deathroll(commands.Cog):
     @commands.command()
     async def deathroll(self, ctx, *, player1, player2, amount):
         """Let's play deathroll"""
-
+        await ctx.send(player1)
+        await ctx.send(player2)
+        await ctx.send(amount)
         playerOne = player1
         playerTwo = player2
         bet = amount
