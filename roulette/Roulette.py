@@ -4,7 +4,7 @@ import time
 from typing import Counter
 import discord
 from redbot.core import checks, commands
-import asyncio
+from discord.ext.commands import bot_has_permissions, Bot, BotMissingPermissions
 
 class roulette(commands.Cog):
     """Roulette"""
@@ -14,6 +14,7 @@ class roulette(commands.Cog):
 
     #coin flip
     @commands.command()
+    @bot_has_permissions(kick_members = True)
     #@commands.has_permissions(kick_members=True)
     async def roulette(self, ctx):
         """Feeling lucky?"""
