@@ -15,7 +15,7 @@ class roulette(commands.Cog):
 
     #main function
     @commands.command()
-    async def roulette(self, ctx, result):
+    async def roulette(self, ctx):
         """Feeling lucky?"""
 
         result = ""
