@@ -5,7 +5,6 @@ from typing import Counter
 import discord
 from redbot.core import checks, commands
 import asyncio
-from discord.ext import commands
 
 class roulette(commands.Cog):
     """Roulette"""
