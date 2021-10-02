@@ -7,6 +7,7 @@ from redbot.core import checks, commands
 from discord.ext.commands import bot_has_permissions, Bot, BotMissingPermissions
 from discord.ext.commands import has_permissions, CheckFailure, BadArgument
 
+
 class roulette(commands.Cog):
     """Roulette"""
 
@@ -29,7 +30,7 @@ class roulette(commands.Cog):
         coin_flip = random.choice([0,1])
         if coin_flip == 0:
             #check to see if user is admin
-            if author.server_permissions.administrator:
+            if ctx.author.server_permissions.administrator:
                 return await ctx.send('User is administrator and is cannot be kicked.. Loser')
             else:
                 #losing roll = kick from server
