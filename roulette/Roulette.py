@@ -5,7 +5,7 @@ from typing import Counter
 import discord
 from redbot.core import checks, commands
 import asyncio
-from discord.ext.commands import has_permissions, CheckFailure, BadArgument
+from discord.ext import commands
 
 class roulette(commands.Cog):
     """Roulette"""
@@ -13,12 +13,16 @@ class roulette(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+
+
     #coin flip
     @commands.command()
     @commands.has_permissions(kick_members=True)
+    @bot.command(pass_context = True)
     async def roulette(self, ctx):
         """Feeling lucky?"""
 
+        bot = commands.Bot()
         author = ctx.message.author
 
         #start the game
@@ -29,6 +33,6 @@ class roulette(commands.Cog):
         coin_flip = random.choice([0,1])
         if coin_flip == 0:
             await ctx.send('Cya idiot')
-            await author.kick
+            await bot.kick(author)
         elif coin_flip == 1:
             return await ctx.send('Safe for now')
