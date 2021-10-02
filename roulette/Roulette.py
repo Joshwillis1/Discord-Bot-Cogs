@@ -18,7 +18,6 @@ class roulette(commands.Cog):
     #coin flip
     @commands.command()
     @commands.has_permissions(kick_members=True)
-    @bot.command(pass_context = True)
     async def roulette(self, ctx):
         """Feeling lucky?"""
 
