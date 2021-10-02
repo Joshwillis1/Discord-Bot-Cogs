@@ -19,11 +19,12 @@ class roulette(commands.Cog):
     async def roulette(self, ctx):
         """Feeling lucky?"""
 
+        author = discord.user.id
         result = ""
 
         #start the game
         await ctx.send("Feelin' lucky?")
-        return await ctx.send(self)
+        return await ctx.send(author)
         #pause for dramatic effect
         time.sleep(3)
         #perform the 50/50 coin flip
