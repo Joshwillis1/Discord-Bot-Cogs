@@ -24,7 +24,6 @@ class roulette(commands.Cog):
 
         #start the game
         await ctx.send("Feelin' lucky?")
-        return await ctx.send(author)
         #pause for dramatic effect
         time.sleep(3)
         #perform the 50/50 coin flip
@@ -37,5 +36,5 @@ class roulette(commands.Cog):
             result == 'not kick'
 
         
-       # if result == 'kick':
-       #     await ctx.kick(discord.user)
+        if result == 'kick':
+            await ctx.kick(author)
