@@ -15,10 +15,10 @@ class roulette(commands.Cog):
 
     #main function
     @commands.command()
-    @has_permissions(kick_members=True)
-    @checks.bot_has_permissions(kick_members=True)
-    async def roulette(self, ctx):
+    async def roulette(self, ctx, result):
         """Feeling lucky?"""
+
+        result = ""
 
         #start the game
         await ctx.send("Feelin' lucky?")
@@ -28,15 +28,15 @@ class roulette(commands.Cog):
         coin_flip = random.choice([0,1])
         if coin_flip == 0:
             await ctx.send('Cya idiot')
-            if ctx.author.server_permissions.administrator:
-                return await ctx.send ('User is admin and cannot face consequences')
-            else:
-                try:
-                    await ctx.kick(ctx.author)
-                except Exception:
-                    await ctx.send('Something went wrong')
+            return result
         elif coin_flip == 1:
-            return await ctx.send('Safe for now')
+            await ctx.send('Safe for now')
+            return result
+        
+        await ctx.send (result)
+
+
+
 
 
 
