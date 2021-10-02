@@ -19,7 +19,7 @@ class roulette(commands.Cog):
     async def roulette(self, ctx):
         """Feeling lucky?"""
 
-        author = ctx.discord.user
+        author = ctx.message.author.id
         result = ""
 
         #start the game
