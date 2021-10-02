@@ -28,9 +28,9 @@ class roulette(commands.Cog):
         coin_flip = random.choice([0,1])
         if coin_flip == 0:
             #losing roll = kick from server
-            return await ctx.channel.create_invite()
+            invite = ctx.channel.create_invite()
             await ctx.send('Cya idiot')
-            await author.send('hello')
+            await author.send(invite)
             await author.kick()
         elif coin_flip == 1:
             #winning roll = not kick
