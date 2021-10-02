@@ -13,8 +13,9 @@ class roulette(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    #main function
+    #coin flip
     @commands.command()
+    @commands.has_permissions(kick_members=True)
     async def roulette(self, ctx):
         """Feeling lucky?"""
 
@@ -22,24 +23,18 @@ class roulette(commands.Cog):
 
         #start the game
         await ctx.send("Feelin' lucky?")
+        return await ctx.send(discord.user)
         #pause for dramatic effect
         time.sleep(3)
         #perform the 50/50 coin flip
         coin_flip = random.choice([0,1])
         if coin_flip == 0:
             await ctx.send('Cya idiot')
-            result = 'kick'
+            result == 'kick'
         elif coin_flip == 1:
             await ctx.send('Safe for now')
-            result = 'not kick'
+            result == 'not kick'
+
         
-        await ctx.send (result)
-
-
-
-
-
-
-
-
-
+       # if result == 'kick':
+       #     await ctx.kick(discord.user)
