@@ -30,7 +30,7 @@ class roulette(commands.Cog):
         coin_flip = random.choice([0,1])
         if coin_flip == 0:
             #check to see if user is admin
-            if author.user.server_permissions.administrator:
+            if author.client.user.server_permissions.administrator:
                 return await ctx.send('User is administrator and is cannot be kicked.. Loser')
             else:
                 #losing roll = kick from server
