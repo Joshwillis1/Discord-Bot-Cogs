@@ -28,6 +28,6 @@ class roulette(commands.Cog):
         coin_flip = random.choice([0,1])
         if coin_flip == 0:
             await ctx.send('Cya idiot')
-            await ctx.author.kick()
+            await author.kick()
         elif coin_flip == 1:
             return await ctx.send('Safe for now')
