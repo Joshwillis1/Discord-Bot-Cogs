@@ -5,6 +5,7 @@ from typing import Counter
 import discord
 from redbot.core import checks, commands
 import asyncio
+from discord.ext.commands import has_permissions, CheckFailure, BadArgument
 
 class roulette(commands.Cog):
     """Roulette"""
@@ -14,6 +15,7 @@ class roulette(commands.Cog):
 
     #main function
     @commands.command()
+    @has_permissions(kick_members=True)
     @checks.bot_has_permissions(kick_members=True)
     async def roulette(self, ctx):
         """Feeling lucky?"""
