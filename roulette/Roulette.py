@@ -33,12 +33,17 @@ class roulette(commands.Cog):
             if author.guild_permissions.administrator:
                 return await ctx.send('User is administrator and is cannot be kicked.. Loser')
             else:
-                #losing roll = kick from server
-                await ctx.send('Cya idiot')
-                #send message to user before kick with a server invite
-                await ctx.author.send(await ctx.channel.create_invite(max_uses=1,unique=True))
-                #perform the kick
-                await author.kick()
+                #catch exceptions (if user spams or something)
+                try:   
+                    #losing roll = kick from server
+                    await ctx.send('Cya idiot')
+                    #send message to user before kick with a server invite
+                    await ctx.author.send(await ctx.channel.create_invite(max_uses=1,unique=True))
+                    #perform the kick
+                    await author.kick()
+                except:
+                    return await ctx.send('Ya broke it')
+
         elif coin_flip == 1:
             #winning roll = not kick
             return await ctx.send('Safe for now')
