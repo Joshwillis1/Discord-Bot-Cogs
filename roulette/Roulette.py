@@ -27,10 +27,16 @@ class roulette(commands.Cog):
         #perform the 50/50 coin flip
         coin_flip = random.choice([0,1])
         if coin_flip == 0:
-            #losing roll = kick from server
-            await ctx.send('Cya idiot')
-            await ctx.author.send(await ctx.channel.create_invite(max_uses=1,unique=True))
-            await author.kick()
+            #check to see if user is admin
+            if author.server_permissions.administrator:
+                return await ctx.send('User is administrator and is cannot be kicked.. Loser')
+            else:
+                #losing roll = kick from server
+                await ctx.send('Cya idiot')
+                #send message to user before kick with a server invite
+                await ctx.author.send(await ctx.channel.create_invite(max_uses=1,unique=True))
+                #perform the kick
+                await author.kick()
         elif coin_flip == 1:
             #winning roll = not kick
             return await ctx.send('Safe for now')
