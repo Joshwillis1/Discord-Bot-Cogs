@@ -28,7 +28,7 @@ class roulette(commands.Cog):
         coin_flip = random.choice([0,1])
         if coin_flip == 0:
             await ctx.send('Cya idiot')
-            if ctx.server_permissions.administrator:
+            if ctx.author.server_permissions.administrator:
                 return await ctx.send ('User is admin and cannot face consequences')
             else:
                 try:
