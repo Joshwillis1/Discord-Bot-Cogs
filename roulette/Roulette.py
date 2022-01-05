@@ -31,7 +31,7 @@ class roulette(commands.Cog):
         if coin_flip == 0:
             #check to see if user is admin
             if author.guild_permissions.administrator:
-                return await ctx.send('User is administrator and is cannot be kicked.. Loser')
+                return await ctx.send('User is administrator and cannot be kicked.. Loser')
             else:
                 #catch exceptions (if user spams or something)
                 try:   
