@@ -3,7 +3,6 @@ from redbot.core import Config, checks, commands
 import openai
 import re
 
-
 class ChatGPT(commands.Cog):
     """Send messages to ChatGPT"""
 
