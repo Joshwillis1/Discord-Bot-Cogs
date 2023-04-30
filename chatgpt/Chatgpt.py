@@ -8,7 +8,7 @@ import asyncio
 
 
 class TalkToChatGPTCog(commands.Cog):
-    async def __init__(self, bot):
+    def __init__(self, bot):
         self.bot = bot
         self.api_key = os.environ.get("OPENAI_API_KEY")
         openai.api_key = self.api_key
@@ -39,6 +39,6 @@ class TalkToChatGPTCog(commands.Cog):
             print(e)
             return "Oops! Something went wrong."
 
-async def setup(bot):
+def setup(bot):
     cog = TalkToChatGPTCog(bot)
     
