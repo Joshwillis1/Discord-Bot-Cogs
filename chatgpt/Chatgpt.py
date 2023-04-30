@@ -24,8 +24,8 @@ class TalkToChatGPTCog(commands.Cog):
             await ctx.send(response)
             self.prev_ai_message = response
 
-    async def get_response(self, message, prev_ai_message=None):
-        await ctx.send("Prev AI message: " + str(prev_ai_message))
+    def get_response(self, message, prev_ai_message=None):
+        ctx.send("Prev AI message: " + str(prev_ai_message))
         user_prompt = f"User: {message}"
         ai_prompt = f"AI: {prev_ai_message}\n" if prev_ai_message else "AI:"
         prompt = f"{ai_prompt}\n{user_prompt}"
