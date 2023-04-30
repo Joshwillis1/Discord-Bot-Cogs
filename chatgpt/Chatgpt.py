@@ -36,16 +36,6 @@ class TalkToChatGPTCog(commands.Cog):
             )
             ai_message = response.choices[0].text.strip()
 
-            response = openai.Completion.create(
-                engine="davinci",
-                prompt=ai_prompt,
-                max_tokens=256,
-                n=1,
-                stop=None,
-                temperature=0.7,
-            )
-            ai_message += "\n" + response.choices[0].text.strip()
-
             return ai_message
         except Exception as e:
             print(e)
