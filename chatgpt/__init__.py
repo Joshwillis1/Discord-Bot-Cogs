@@ -1,5 +1,5 @@
 from .chatgpt import ChatGPT
-from redbot.core.bot import Red
 
-def setup(bot: Red):  
+
+def setup(bot):
     bot.add_cog(ChatGPT(bot))

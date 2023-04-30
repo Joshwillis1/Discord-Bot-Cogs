@@ -2,7 +2,6 @@ from discord import Message
 from redbot.core import Config, checks, commands
 import openai
 import re
-from .chatgpt import ChatGPT
 
 
 class ChatGPT(commands.Cog):
