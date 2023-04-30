@@ -40,6 +40,25 @@ class TalkToChatGPTCog(commands.Cog):
             return e
             #return "Oops! Something went wrong."
 
+    @commands.command()
+    async def chat(self, ctx):
+        await ctx.send("Hi! I'm ChatGPT, a language model trained by OpenAI. Let's chat! Type 'exit' to end the chat.")
+        while True:
+            try:
+                user_input = await self.bot.wait_for(
+                    "message",
+                    check=lambda message: message.author == ctx.author and message.channel == ctx.channel,
+                    timeout=60.0,
+                )
+                if user_input.content.lower() == "exit":
+                    await ctx.send("Goodbye!")
+                    break
+                response = self.get_response(user_input.content)
+                await ctx.send(f"AI: {response}")
+            except asyncio.TimeoutError:
+                await ctx.send("Sorry, I didn't receive any message in the last 60 seconds. The chat has ended.")
+                break
+
 def setup(bot):
     cog = TalkToChatGPTCog(bot)
     
