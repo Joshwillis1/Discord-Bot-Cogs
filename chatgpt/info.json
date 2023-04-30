@@ -17,7 +17,6 @@
         "msgpack",
         "aiohttp",
         "pydantic",
-        "orjson",
-        "tiktoken"
+        "orjson"
       ]
 }
