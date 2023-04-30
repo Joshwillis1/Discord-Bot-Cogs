@@ -1,37 +1,39 @@
 # Chat-gpt
 from redbot.core import commands
-import openai
 import discord
 from discord.ext import commands
+import openai
+import os
 import asyncio
 
-class chatgpt(commands.Cog):
-    """Chat-gpt"""
-
+class TalkToChatGPTCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-
-    #main function
-    class ChatCog(commands.Cog):
-        def __init__(self, bot):
-            self.bot = bot
-            openai.api_key = "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" # Replace with your OpenAI API key
+        self.api_key = os.environ.get("OPENAI_API_KEY")
+        openai.api_key = self.api_key
 
     @commands.command()
-    async def chat(self, ctx, *, message):
+    async def talk(self, ctx, *, message):
         response = self.get_response(message)
         await ctx.send(response)
 
     def get_response(self, message):
-        model_engine = "text-davinci-002" # Replace with the OpenAI model engine you want to use
-        prompt = f"Conversation with ChatGPT:\nUser: {message}\nChatGPT:"
-        response = openai.Completion.create(
-            engine=model_engine,
-            prompt=prompt,
-            max_tokens=1024,
-            n=1,
-            stop=None,
-            temperature=0.5,
-        )
-        return response.choices[0].text.strip()
+        prompt = f"User: {message}\nAI:"
+        try:
+            response = openai.Completion.create(
+                engine="davinci",
+                prompt=prompt,
+                max_tokens=1024,
+                n=1,
+                stop=None,
+                temperature=0.7,
+            )
+            message = response.choices[0].text.strip()
+            return message
+        except Exception as e:
+            print(e)
+            return "Oops! Something went wrong."
+
+def setup(bot):
+    bot.add_cog(TalkToChatGPTCog(bot))
     
