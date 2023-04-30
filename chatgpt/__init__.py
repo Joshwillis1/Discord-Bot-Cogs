@@ -1,4 +1,4 @@
-from .Chatgpt import Chatgpt
+from .Chatgpt import TalkToChatGPTCog
 from redbot.core.bot import Red
 
 async def setup(bot: Red):
