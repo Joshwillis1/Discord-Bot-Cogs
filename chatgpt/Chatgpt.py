@@ -15,7 +15,7 @@ class TalkToChatGPTCog(commands.Cog):
 
     @commands.command()
     async def talk(self, ctx, *, message):
-        response = await self.get_response(message)
+        response = self.get_response(message)
         if isinstance(response, tuple):
             error_message = response[1]
             await ctx.send(error_message)
@@ -25,7 +25,7 @@ class TalkToChatGPTCog(commands.Cog):
     async def get_response(self, message):
         prompt = f"User: {message}\nAI:"
         try:
-            response = await openai.Completion.create(
+            response = openai.Completion.create(
                 engine="davinci",
                 prompt=prompt,
                 max_tokens=1024,
@@ -41,5 +41,4 @@ class TalkToChatGPTCog(commands.Cog):
 
 async def setup(bot):
     cog = TalkToChatGPTCog(bot)
-    bot.add_cog(cog)
     
