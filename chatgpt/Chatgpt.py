@@ -22,7 +22,7 @@ class TalkToChatGPTCog(commands.Cog):
         else:
             await ctx.send(response)
 
-    async def get_response(self, message):
+    def get_response(self, message):
         prompt = f"User: {message}\nAI:"
         try:
             response = openai.Completion.create(
