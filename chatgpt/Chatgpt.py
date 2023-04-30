@@ -39,6 +39,6 @@ class TalkToChatGPTCog(commands.Cog):
             print(e)
             return "Oops! Something went wrong."
 
-#def setup(bot):
-    #bot.add_cog(TalkToChatGPTCog(bot))
+def setup(bot):
+    bot.add_cog(TalkToChatGPTCog(bot))
     
