@@ -1,5 +1,6 @@
 from discord import Message
 from redbot.core import Config, checks, commands
+from redbot.core.bot import Red
 import openai
 import re
 
