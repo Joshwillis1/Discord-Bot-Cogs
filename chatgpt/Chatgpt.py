@@ -37,7 +37,8 @@ class TalkToChatGPTCog(commands.Cog):
             return message
         except Exception as e:
             print(e)
-            return "Oops! Something went wrong."
+            return e
+            #return "Oops! Something went wrong."
 
 def setup(bot):
     cog = TalkToChatGPTCog(bot)
