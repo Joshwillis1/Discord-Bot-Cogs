@@ -23,22 +23,33 @@ class TalkToChatGPTCog(commands.Cog):
             await ctx.send(response)
 
     def get_response(self, message):
-        prompt = f"User: {message}\nAI:"
+        user_prompt = f"User: {message}"
+        ai_prompt = "AI:"
         try:
             response = openai.Completion.create(
                 engine="davinci",
-                prompt=prompt,
+                prompt=user_prompt,
                 max_tokens=256,
                 n=1,
                 stop=None,
                 temperature=0.7,
             )
-            message = response.choices[0].text.strip()
-            return message
+            ai_message = response.choices[0].text.strip()
+
+            response = openai.Completion.create(
+                engine="davinci",
+                prompt=ai_prompt,
+                max_tokens=256,
+                n=1,
+                stop=None,
+                temperature=0.7,
+            )
+            ai_message += "\n" + response.choices[0].text.strip()
+
+            return ai_message
         except Exception as e:
             print(e)
             return e
-            #return "Oops! Something went wrong."
 
     @commands.command()
     async def chat(self, ctx):
