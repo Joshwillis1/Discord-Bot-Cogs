@@ -40,5 +40,6 @@ class TalkToChatGPTCog(commands.Cog):
             return "Oops! Something went wrong."
 
 async def setup(bot):
-    bot.add_cog(TalkToChatGPTCog(bot))
+    cog = TalkToChatGPTCog(bot)
+    bot.add_cog(cog)
     
