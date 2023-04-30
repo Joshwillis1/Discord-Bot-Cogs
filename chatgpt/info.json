@@ -1,12 +1,11 @@
 {
-    "name": "chatgpt",
     "author": ["Josh"],
-    "description": "chat to the one and only",
-    "short": "Chatgpt",
-    "tags": ["chatgpt"],
+    "name": "ChatGPT",
+    "description": "Send messages to ChatGPT",
     "install_msg": "Requires an OpenAI API key. Use `[p] set api openai api_key <value>`. An API key may be acquired from: https://platform.openai.com/account/api-keys",
-    "required_cogs": {},
-    "requirements": [
-        "openai"
-      ]
+    "short": "Send messages to ChatGPT",
+    "tags": ["chatgpt", "openai"],
+    "requirements": ["openai"],
+    "type": "COG",
+    "end_user_data_statement": "This cog does not persistently store data or metadata about users. However, this cog does pass user data to an external API for the purposes of simulated conversation responses."
 }
