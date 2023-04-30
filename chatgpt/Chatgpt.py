@@ -17,9 +17,6 @@ class TalkToChatGPTCog(commands.Cog):
     async def talk(self, ctx, *, message):
         response = self.get_response(message)
         if isinstance(response, tuple):
-            error_message = response[1]
-            await ctx.send(error_message)
-        else:
             await ctx.send(response)
 
     def get_response(self, message):
