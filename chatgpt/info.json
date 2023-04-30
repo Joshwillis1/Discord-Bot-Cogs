@@ -5,7 +5,15 @@
     "install_msg": "Requires an OpenAI API key. Use `[p] set api openai api_key <value>`. An API key may be acquired from: https://platform.openai.com/account/api-keys",
     "short": "Send messages to ChatGPT",
     "tags": ["chatgpt", "openai"],
-    "requirements": ["openai"],
+    "requirements": [
+        "openai",
+        "aiocache",
+        "ujson",
+        "msgpack",
+        "aiohttp",
+        "pydantic",
+        "orjson"
+      ],
     "type": "COG",
     "end_user_data_statement": "This cog does not persistently store data or metadata about users. However, this cog does pass user data to an external API for the purposes of simulated conversation responses."
 }
