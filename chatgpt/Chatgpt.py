@@ -22,9 +22,9 @@ class TalkToChatGPTCog(commands.Cog):
         else:
             await ctx.send(response)
 
-    def get_response(self, message):
+    def get_response(self, message, prev_ai_message=None):
         user_prompt = f"User: {message}"
-        ai_prompt = "AI:"
+        ai_prompt = f"AI: {prev_ai_message}\n" if prev_ai_message else "AI:"
         try:
             response = openai.Completion.create(
                 engine="davinci",
@@ -54,6 +54,7 @@ class TalkToChatGPTCog(commands.Cog):
     @commands.command()
     async def chat(self, ctx):
         await ctx.send("Hi! I'm ChatGPT, a language model trained by OpenAI. Let's chat! Type 'exit' to end the chat.")
+        prev_ai_message = None
         while True:
             try:
                 user_input = await self.bot.wait_for(
@@ -64,7 +65,8 @@ class TalkToChatGPTCog(commands.Cog):
                 if user_input.content.lower() == "exit":
                     await ctx.send("Goodbye!")
                     break
-                response = self.get_response(user_input.content)
+                response = self.get_response(user_input.content, prev_ai_message)
+                prev_ai_message = response.split("\n")[-1].strip()  # get last AI message
                 await ctx.send(f"AI: {response}")
             except asyncio.TimeoutError:
                 await ctx.send("Sorry, I didn't receive any message in the last 60 seconds. The chat has ended.")
