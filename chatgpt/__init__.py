@@ -2,5 +2,5 @@ from .chatgpt import Chatgpt
 from redbot.core.bot import Red
 
 async def setup(bot: Red):
-    cog = Assistant(bot)
+    cog = chatgpt(bot)
     await bot.add_cog(cog)
