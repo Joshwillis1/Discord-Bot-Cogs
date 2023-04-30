@@ -12,15 +12,17 @@ class TalkToChatGPTCog(commands.Cog):
         self.bot = bot
         self.api_key = os.environ.get("OPENAI_API_KEY")
         openai.api_key = self.api_key
+        self.prev_ai_message = None
 
     @commands.command()
     async def talk(self, ctx, *, message):
-        response = self.get_response(message)
+        response = self.get_response(message, self.prev_ai_message)
         if isinstance(response, tuple):
             error_message = response[1]
             await ctx.send(error_message)
         else:
             await ctx.send(response)
+            self.prev_ai_message = response
 
     def get_response(self, message, prev_ai_message=None):
         user_prompt = f"User: {message}"
