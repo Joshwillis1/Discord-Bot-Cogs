@@ -9,15 +9,19 @@ import asyncio
 class TalkToChatGPTCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        #self.api_key = os.environ.get("OPENAI_API_KEY")
-       # openai.api_key = self.api_key
+        self.api_key = os.environ.get("OPENAI_API_KEY")
+        openai.api_key = self.api_key
 
     @commands.command()
     async def talk(self, ctx, *, message):
         response = self.get_response(message)
-        await ctx.send(response)
+        if isinstance(response, tuple):
+            error_message = response[1]
+            await ctx.send(error_message)
+        else:
+            await ctx.send(response)
 
-    def get_response(self, message):
+    async def get_response(self, message):
         prompt = f"User: {message}\nAI:"
         try:
             response = openai.Completion.create(
