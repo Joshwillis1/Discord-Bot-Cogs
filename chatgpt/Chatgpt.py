@@ -28,7 +28,7 @@ class TalkToChatGPTCog(commands.Cog):
             response = openai.Completion.create(
                 engine="davinci",
                 prompt=prompt,
-                max_tokens=512,
+                max_tokens=256,
                 n=1,
                 stop=None,
                 temperature=0.7,
