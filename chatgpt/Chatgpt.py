@@ -182,3 +182,6 @@ class ChatGPT(commands.Cog):
             await ctx.send("Enabled sending messages to ChatGPT on bot reply.")
         else:
             await ctx.send("Disabled sending messages to ChatGPT on bot reply.")
+
+def setup(bot):
+    cog = ChatGPT(bot)
