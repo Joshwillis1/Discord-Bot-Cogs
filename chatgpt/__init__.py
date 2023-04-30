@@ -1,6 +1,4 @@
-from .Chatgpt import TalkToChatGPTCog
-from redbot.core.bot import Red
+from .chatgpt import ChatGPT
 
-def setup(bot: Red):  
-    #cog = TalkToChatGPTCog(bot)
-    bot.add_cog(TalkToChatGPTCog(bot))
+def setup(bot):
+    bot.add_cog(ChatGPT(bot))
