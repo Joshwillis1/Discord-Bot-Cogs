@@ -25,10 +25,11 @@ class TalkToChatGPTCog(commands.Cog):
     def get_response(self, message, prev_ai_message=None):
         user_prompt = f"User: {message}"
         ai_prompt = f"AI: {prev_ai_message}\n" if prev_ai_message else "AI:"
+        prompt = f"{ai_prompt}\n{user_prompt}"
         try:
             response = openai.Completion.create(
                 engine="davinci",
-                prompt=user_prompt,
+                prompt=prompt,
                 max_tokens=256,
                 n=1,
                 stop=None,
