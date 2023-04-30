@@ -1,8 +1,8 @@
 {
-    "name": "chat-gpt",
+    "name": "chatgpt",
     "author": ["Josh"],
     "description": "chat to the one and only",
-    "short": "Chat-gpt",
-    "tags": ["chat-gpt"],
+    "short": "Chatgpt",
+    "tags": ["chatgpt"],
     "install_msg": "Time to take over"
 }
