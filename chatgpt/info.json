@@ -1,11 +1,16 @@
 {
     "author": ["Josh"],
-    "name": "ChatGPT",
-    "description": "Send messages to ChatGPT",
-    "install_msg": "Requires an OpenAI API key. Use `[p] set api openai api_key <value>`. An API key may be acquired from: https://platform.openai.com/account/api-keys",
-    "short": "Send messages to ChatGPT",
-    "tags": ["chatgpt", "openai"],
-    "requirements": [
+    "name": "chatgpt",
+    "description": "chat to the one and only",
+    "short": "Chatgpt",
+    "tags": ["chatgpt"],
+    "install_msg": "Time to take over",
+    "permissions": [
+        "read_messages",
+        "send_messages"
+      ],
+      "required_cogs": {},
+      "requirements": [
         "openai",
         "aiocache",
         "ujson",
@@ -13,7 +18,5 @@
         "aiohttp",
         "pydantic",
         "orjson"
-      ],
-    "type": "COG",
-    "end_user_data_statement": "This cog does not persistently store data or metadata about users. However, this cog does pass user data to an external API for the purposes of simulated conversation responses."
+      ]
 }
