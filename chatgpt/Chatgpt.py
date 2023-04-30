@@ -3,6 +3,7 @@ import discord
 from redbot.core import commands
 import openai
 import os
+import asyncio
 
 
 class TalkToChatGPTCog(commands.Cog):
@@ -33,6 +34,6 @@ class TalkToChatGPTCog(commands.Cog):
             print(e)
             return "Oops! Something went wrong."
 
-def setup(bot):
-    bot.add_cog(TalkToChatGPTCog(bot))
+#def setup(bot):
+    #bot.add_cog(TalkToChatGPTCog(bot))
     
